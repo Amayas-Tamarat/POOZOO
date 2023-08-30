@@ -81,7 +81,11 @@ class Employee{
     }
 
     public function feed(AbstractAnimal $animal): string 
-    {
+    {   
+        if($animal->getIsSleeping()) 
+        {
+            return "cet animal dort";
+        }
         $result = $animal->eat();
         return $result;
     }

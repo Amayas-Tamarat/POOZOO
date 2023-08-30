@@ -145,6 +145,19 @@ abstract class AbstractEnclos
         }
     }
 
+    public function removeAnimal(array &$animals, AbstractAnimal $animalObject): string
+    {
+        $key = array_search($animalObject, $animals, true);
+    
+        if ($key !== false) {
+            unset($animals[$key]);
+            $this->setNbOfAnimals($this->getNbOfAnimals()-1);
+            return "l'animal '{$animalObject->getName()}' a été retiré de l'enclos .";
+        } else {
+            return "l'animal '{$animalObject->getName()}' n'est pas dans l'enclos.";
+        }
+    }
+
     public function displayAllAnimalsInEnclosure(): string
     {
         $animalList = "";
