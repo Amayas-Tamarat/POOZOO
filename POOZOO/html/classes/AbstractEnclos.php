@@ -7,16 +7,11 @@ abstract class AbstractEnclos
     protected int $nbOfAnimals;
     protected array $animals = [];
 
-    public function __construct(
-        string $name,
-        int $cleanliness,
-        int $nbOfAnimals,
-        array $animals
-    ) {
+    public function __construct(string $name ) {
         $this->name = $name;
-        $this->cleanliness = $cleanliness;
-        $this->nbOfAnimals = $nbOfAnimals;
-        $this->animals = $animals;
+        $this->cleanliness = 100;
+        $this->nbOfAnimals = 0;
+        $this->animals = [];
     }
 
     /**
@@ -97,11 +92,11 @@ abstract class AbstractEnclos
         return $this;
     }
 
-    public function displayAllEnclosInfo()
+    public function displayAllEncloInfos()
     {
-        echo $this->getName();
-        echo $this->getCleanliness();
-        echo $this->getNbOfAnimals();
+        echo $this->getName() .'<br>';
+        echo $this->getCleanliness() .'<br>';
+        echo $this->getNbOfAnimals() .'<br>';
     }
 
     public function isEmpty(): bool
@@ -152,6 +147,7 @@ abstract class AbstractEnclos
         if ($key !== false) {
             unset($animals[$key]);
             $this->setNbOfAnimals($this->getNbOfAnimals()-1);
+            $this->setAnimals($animals);
             return "l'animal '{$animalObject->getName()}' a été retiré de l'enclos .";
         } else {
             return "l'animal '{$animalObject->getName()}' n'est pas dans l'enclos.";
