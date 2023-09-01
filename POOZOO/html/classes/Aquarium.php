@@ -7,11 +7,11 @@ class Aquarium extends AbstractEnclos{
         int $cleanliness,
         int $nbOfAnimals,
         array $animals,
-        int $height
+        int $saltiness
     )
     {
         parent::__construct($name,$cleanliness,$nbOfAnimals,$animals);
-        $this->saltiness = $height;
+        $this->saltiness = $saltiness;
     }
     
 
